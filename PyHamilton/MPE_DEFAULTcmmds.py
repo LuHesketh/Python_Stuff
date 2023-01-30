@@ -281,3 +281,18 @@ defaults_by_cmd = { # 'field':None indicates field is required when assembling c
           'deviceId':'', # (integer)
           'sourceId':'', # (integer;
           '{ return(0); } ':'', # (integer;
+          
+      }),
+     'MeasureFullContainer':('MPE_calibrationMEASUREF', {
+         'deviceId':'', # (integer)
+         'sourceId':'', # (integer;
+         'fullReading':'', # (integer;
+         '{ return(0); } ':'', # (integer;
+         
+    }),
+     'SaveContainerCalibration':('MPE_calibrationSAVE', {
+         'deviceId':'', # (integer)
+         'sourceId':'', # (integer;
+         '{ return(0); } ':'', # (integer;
+         
+         }
