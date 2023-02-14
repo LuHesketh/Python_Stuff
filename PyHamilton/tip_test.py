@@ -49,6 +49,7 @@ liq_class = 'StandardVolumeFilter_Water_DispenseJet_Empty'
 
 if __name__ == '__main__': 
     with HamiltonInterface(simulate=True) as ham_int:
+        normal_logging(ham_int, os.getcwd())
         initialize(ham_int)
         tip_pick_up(ham_int, tips_poss)
         tip_eject(ham_int, tips_poss)
