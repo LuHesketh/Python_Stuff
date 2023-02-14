@@ -4,6 +4,10 @@ Created on Tue Jan 17 09:18:09 2023
 
 @author: Luiza
 """
+
+import os
+import pyhamilton
+
 from pyhamilton import (HamiltonInterface,  LayoutManager, 
  Plate96, Tip96, initialize, tip_pick_up, tip_eject, 
  aspirate, dispense,  oemerr, resource_list_with_prefix)
@@ -35,12 +39,12 @@ num_samples = 20 #change it to variable
 
 
 lmgr = LayoutManager('deck.lay')
-tips_res = lmgr.assign_unused_resource(ResourceType(Tip96, 'tips_96'))
-plates = resource_list_with_prefix(lmgr, 'plate_', Plate96, 5)
 tips = resource_list_with_prefix(lmgr, 'tips', Tip96, 5)
+tips_res = lmgr.assign_unused_resource(ResourceType(Tip96, 'tips_96'))
+liq_class = 'StandardVolumeFilter_Water_DispenseJet_Empty'
 
-
-tips_poss = [(tips[0], x) for x in range(8)]
+ tips_poss = tips.get_tips(num_channels)
+        tip_pick_up(ham_int, tips_poss)
 
 
 if __name__ == '__main__': 
