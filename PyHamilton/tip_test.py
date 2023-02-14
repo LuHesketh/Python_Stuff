@@ -13,12 +13,7 @@ from pyhamilton import (HamiltonInterface,  LayoutManager,
  aspirate, dispense,  oemerr, resource_list_with_prefix)
 
 class TipRack:
-    """
-    This class lets you grab tips from a tip rack without having
-    to manually keep track of the current position/ remaining tips
-    in the rack
-    """
-    
+   
     def __init__(self, rack):
         self.rack = rack
         self.starting_tips = rack._num_items
