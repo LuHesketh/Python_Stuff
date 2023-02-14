@@ -36,9 +36,8 @@ tips = resource_list_with_prefix(lmgr, 'tips', Tip96, 1)
 tips_res = lmgr.assign_unused_resource(ResourceType(Tip96, 'tips_96'))
 liq_class = 'StandardVolumeFilter_Water_DispenseJet_Empty'
 
-tips_poss = tips.get_tips(num_channels)
-        tip_pick_up(ham_int, tips_poss)
   
+tips_poss = [(tips[0], x) for x in range(8)]
   
 
 if __name__ == '__main__': 
