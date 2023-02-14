@@ -35,17 +35,16 @@ class TipRack:
         tips = self.get_tips(num_tips)
         return tips
 
-num_samples = 20 #change it to variable
-
 
 lmgr = LayoutManager('deck.lay')
-tips = resource_list_with_prefix(lmgr, 'tips', Tip96, 5)
+tips = resource_list_with_prefix(lmgr, 'tips', Tip96, 1)
 tips_res = lmgr.assign_unused_resource(ResourceType(Tip96, 'tips_96'))
 liq_class = 'StandardVolumeFilter_Water_DispenseJet_Empty'
 
- tips_poss = tips.get_tips(num_channels)
+tips_poss = tips.get_tips(num_channels)
         tip_pick_up(ham_int, tips_poss)
-
+  
+  
 
 if __name__ == '__main__': 
     with HamiltonInterface(simulate=True) as ham_int:
