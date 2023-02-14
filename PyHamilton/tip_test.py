@@ -37,8 +37,6 @@ liq_class = 'StandardVolumeFilter_Water_DispenseJet_Empty'
 
 tips = TipRack(tips_res)
 
-tips_poss = [(tips[0], x) for x in range(8)]
-
 tips_poss = tips.get_tips(num_channels)
         tip_pick_up(ham_int, tips_poss)
 
