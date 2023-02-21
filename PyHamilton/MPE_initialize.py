@@ -15,8 +15,9 @@ lmgr = LayoutManager('MPEdeck.lay')
 if __name__ == '__main__': 
     with HamiltonInterface(simulate=True) as ham_int:
         initialize(ham_int)
-        mpe2_id = mpe2_connect_com(ham_int, 12, 921600, simulation_mode = False, options = 0)
+        mpe2_id = mpe2_connect_com(ham_int, 12, 921600, simulation_mode =False, options = 0)
         mpe2_id.return_data[0]
         mpe2_id = int(mpe2_id.return_data[0])
         print(mpe2_id)
         mpe2_initialize(ham_int, mpe2_id)
+       
