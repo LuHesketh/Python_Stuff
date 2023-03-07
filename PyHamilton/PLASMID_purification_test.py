@@ -13,6 +13,20 @@ from pyhamilton import (HamiltonInterface,  LayoutManager,
  aspirate, dispense, oemerr, resource_list_with_prefix, normal_logging,
  ResourceType)
 
+from pyhamilton import(hhs_begin_monitoring, hhs_create_star_device, hhs_create_usb_device,
+            hhs_end_monitoring, hhs_get_firmware_version, hhs_get_serial_num, hhs_get_shaker_param,
+            hhs_get_shaker_speed, hhs_get_temp_param, hhs_get_temp, hhs_get_temp_state, hhs_send_firmware_cmd,
+            hhs_set_plate_lock, hhs_stop_all_shakers, hhs_set_shaker_param, 
+            hhs_set_simulation, hhs_set_temp_param, hhs_set_usb_trace, hhs_start_all_shaker,
+            hhs_start_all_shaker_timed, hhs_start_shaker, hhs_start_shaker_timed, hhs_start_temp_ctrl,
+            hhs_stop_shaker, hhs_stop_temp_ctrl, hhs_terminate, hhs_wait_for_shaker, hhs_wait_for_temp_ctrl)
+
+
+
+from pyhamilton import (mpe2_connect_com, mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed)
+
+
+
 """
    This DNA cleanup/purification protocol is to be executed using 2 HAMILTON modules. They are:
        
@@ -28,21 +42,9 @@ from pyhamilton import (HamiltonInterface,  LayoutManager,
         - and add water to the filter plate
         - move filter plate to heater shaker
         - do shaking steps
-        - retrieve
+        - retrieve plate manually from heater shaker
        
    """
-
-from pyhamilton import(hhs_begin_monitoring, hhs_create_star_device, hhs_create_usb_device,
-            hhs_end_monitoring, hhs_get_firmware_version, hhs_get_serial_num, hhs_get_shaker_param,
-            hhs_get_shaker_speed, hhs_get_temp_param, hhs_get_temp, hhs_get_temp_state, hhs_send_firmware_cmd,
-            hhs_set_plate_lock, hhs_stop_all_shakers, hhs_set_shaker_param, 
-            hhs_set_simulation, hhs_set_temp_param, hhs_set_usb_trace, hhs_start_all_shaker,
-            hhs_start_all_shaker_timed, hhs_start_shaker, hhs_start_shaker_timed, hhs_start_temp_ctrl,
-            hhs_stop_shaker, hhs_stop_temp_ctrl, hhs_terminate, hhs_wait_for_shaker, hhs_wait_for_temp_ctrl)
-
-
-
-from pyhamilton import (mpe2_connect_com, mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed)
 
 
 class TipRack:
