@@ -225,6 +225,7 @@ def shake_samples(device_num, hhs_begin_monitoring, hhs_start_shaker,hhs_start_s
 if __name__ == '__main__': 
     with HamiltonInterface(simulate=True) as ham_int:
         initialize(ham_int)
+        device_num = hhs_create_star_device(ham_int, used_node=1)
         mpe2_id = mpe2_connect_com(ham_int, 12, 921600, simulation_mode =False, options = 0)
         mpe2_id.return_data[0]
         mpe2_id = int(mpe2_id.return_data[0])
