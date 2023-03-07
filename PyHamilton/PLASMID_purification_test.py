@@ -69,7 +69,7 @@ num_targets = 30
 #this 'lmgr' is what calls the layout file with all calibrated labwares
 lmgr = LayoutManager('deck_.lay')
 
-# we'll bu using two types of tips in this protocol
+# we'll bu using two types of tips in this protocol corresponding to the volumes of liquids we want to aspirate and dispense. (300ul - 20ul)
 tips_res1 = lmgr.assign_unused_resource(ResourceType(Tip96, 'STF_L_0001')) #low volume tips to transfer DNA
 tips_res2 = lmgr.assign_unused_resource(ResourceType(Tip96, 'STF_L_0002')) #standard volume tips to transfer water
 sample_plate = lmgr.assign_unused_resource(ResourceType(Plate96, 'Mrx_96_DW_0002'))
