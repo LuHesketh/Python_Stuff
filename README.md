@@ -19,9 +19,8 @@ a air-pressure pump.</p>
 
 <code>pip install pyhamilton</code>
 
-<p>The <strong>Plasmid_purification.py</strong> files correspend to finished projects. you can check them out at my <a href="https://github.com/LuHesketh/Python_Stuff/tree/main/PyHamilton">Python for Hamiltons</a> repository.</p>
+<p>The <strong>Plasmid_purification.py</strong> file correspend to finished projects. you can check them out at my <a href="https://github.com/LuHesketh/Python_Stuff/tree/main/PyHamilton">Python for Hamiltons</a> repository.</p>
 
-<p>The <strong>BIOART PNG FILES </strong>correspend to pictures of finished projects.</p>
 
 <h2>Python for making Bioart with ECHO robots</h2>
 
