@@ -7,10 +7,13 @@
   liquid dispenser can use to print the image to a plate using pigmented yeast or bacteria.</p>
   
 <p>You can find out more about this package at the:<a href="https://github.com/Edinburgh-Genome-Foundry/bioprinter">EDIMBURGH GENOME FOUDRY</a>.</p>
-  
+
+<p>Installing the Package with pip in your command line:</p>
+
+
 <code>pip install ez_setup bioprinter</code>.</p>
 
-
+<p>The<strong>BIOART PNG FILES </strong>correspend to pictures of finished projects.</p>
 
 <h2>What you should know</h2>
 
