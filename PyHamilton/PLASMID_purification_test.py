@@ -242,6 +242,8 @@ if __name__ == '__main__':
         
         Activate_overpressure( mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed)
         
+        add_water(water_plate, sample_plate, num_targets = 30, vol = 100)
+
         move_plate(ham_int, sample_plate, Heater_shaker)
         
         shake_samples(device_num = 1, hhs_begin_monitoring, hhs_start_shaker,hhs_start_shaker_timed, hhs_start_temp_ctrl, hhs_stop_shaker, hhs_stop_temp_ctrl, hhs_wait_for_shaker, hhs_wait_for_temp_ctrl, hhs_terminate)
