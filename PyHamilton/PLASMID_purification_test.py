@@ -36,7 +36,7 @@ from pyhamilton import (mpe2_connect_com, mpe2_filter_plate_placed, mpe2_process
     the commands will be imported from PyHamilton and they are called out in the final "if name_=_main_" function THIS ORDER:
         
         - robot grab tip
-        - use tip to transport DNA from DNA plate to filter plate (later ejecting the tip)
+        - use tip to transport DNA from DNA plate to sample filter plate (later ejecting the tip)
         - process DNA through filter 
         - do 2 washing steps through filter
         - and add water to the filter plate
@@ -71,7 +71,7 @@ num_targets = 30
 #this 'lmgr' is what calls the layout file with all calibrated labwares
 lmgr = LayoutManager('deck_.lay')
 
-# we'll bu using two types of tips in this protocol corresponding to the volumes of liquids we want to aspirate and dispense. (300ul - 20ul)
+# we'll be using two types of tips in this protocol corresponding to the volumes of liquids we want to aspirate and dispense. (300ul - 20ul)
 tips_res1 = lmgr.assign_unused_resource(ResourceType(Tip96, 'STF_L_0001')) #low volume tips to transfer DNA
 tips_res2 = lmgr.assign_unused_resource(ResourceType(Tip96, 'STF_L_0002')) #standard volume tips to transfer water
 sample_plate = lmgr.assign_unused_resource(ResourceType(Plate96, 'Mrx_96_DW_0002'))
@@ -139,7 +139,7 @@ with open('mydata.json', 'w') as f:
 
 
 
-#transfer DNA from source plate to sample plate(should be located on the MPE dock)
+#transfer DNA from source plate to sample filter plate(should be located on the MPE dock)
 def add_DNA(source, target, num_targets, vol):
     remaining_targets = num_targets
     while remaining_targets > 0:
@@ -160,7 +160,7 @@ def add_DNA(source, target, num_targets, vol):
         remaining_targets -= num_channels
     
         
-#function that will be used for the washing steps  using the aspiration and dispension pyhamilton functions 
+#function that will be used for the washing steps using the aspiration and dispension functions 
 def add_water(source, target, num_targets, vol):
     remaining_targets = num_targets
     while remaining_targets > 0:
@@ -181,7 +181,7 @@ def add_water(source, target, num_targets, vol):
         remaining_targets -= num_channels
         
         
-#this function allows for the MPE to activate the air pump and process both DNA and water through the filter columns      
+#this function allows for the MPE to activate the air pump and process both DNA and water through the sample filter columns      
 def Activate_overpressure( mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed):
         
         mpe2_filter_plate_placed(ham_int, mpe2_id, 16, 39)
