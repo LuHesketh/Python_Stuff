@@ -25,8 +25,8 @@ from pyhamilton import (HamiltonInterface,  LayoutManager,
         - use tip to transport DNA from DNA plate to filter plate (later ejecting the tip)
         - process DNA through filter 
         - do 2 washing steps through filter
-        - process DNA out of the filter (to final plate) and add water
-        - move final plate to heater shaker
+        - and add water to the filter plate
+        - move filter plate to heater shaker
         - do shaking steps
         - retrieve
        
