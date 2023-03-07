@@ -1,4 +1,4 @@
-<h1>WELCOME TO MY PYTHON PAGE</h1>
+<h1>WELCOME TO MY Robotics PAGE</h1>
 
 <p>My name is Luiza Hesketh and I work with Robots and Synthetic Biology.
 I've worked with OPENTRONS, ECHOS and the Hamilton STAR-line robots. In this Page you can find my most recent works with Laboratory automation, protocols I wrote and Bioarts I made. </p>
