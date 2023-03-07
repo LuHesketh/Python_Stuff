@@ -13,6 +13,25 @@ from pyhamilton import (HamiltonInterface,  LayoutManager,
  aspirate, dispense, oemerr, resource_list_with_prefix, normal_logging,
  ResourceType)
 
+"""
+   This DNA cleanup/purification protocol is to be executed using 2 HAMILTON modules. They are:
+       
+   * MPE2- Air pressure module. to be used to push/process the liquids through a filter
+   * HHS/Heater shaker - to shake the final product at 30 celcius (necessary finalstep)    
+       
+    the commands will be imported from PyHamilton and they are called out in the final "if name_=_main_" function THIS ORDER:
+        
+        - robot grab tip
+        - use tip to transport DNA from DNA plate to filter plate (later ejecting the tip)
+        - process DNA through filter 
+        - do 2 washing steps through filter
+        - process DNA out of the filter (to final plate) and add water
+        - move final plate to heater shaker
+        - do shaking steps
+        - retrieve
+       
+   """
+
 from pyhamilton import(hhs_begin_monitoring, hhs_create_star_device, hhs_create_usb_device,
             hhs_end_monitoring, hhs_get_firmware_version, hhs_get_serial_num, hhs_get_shaker_param,
             hhs_get_shaker_speed, hhs_get_temp_param, hhs_get_temp, hhs_get_temp_state, hhs_send_firmware_cmd,
@@ -208,13 +227,23 @@ if __name__ == '__main__':
         mpe2_id.return_data[0]
         mpe2_id = int(mpe2_id.return_data[0])
         print(mpe2_id)
+        
+        
+        #calling final functions with input robot commands
         add_DNA(DNA_plate, sample_plate, num_targets = 30, vol= 20)
+        
         Activate_overpressure( mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed)
+        
         add_water(water_plate, sample_plate, num_targets = 30, vol = 200)
+        
         Activate_overpressure( mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed)
+        
         add_water(water_plate, sample_plate, num_targets = 30, vol = 200)
+        
         Activate_overpressure( mpe2_filter_plate_placed, mpe2_process_filter_to_waste_container, mpe2_filter_plate_removed)
+        
         move_plate(ham_int, sample_plate, Heater_shaker)
+        
         shake_samples(device_num = 1, hhs_begin_monitoring, hhs_start_shaker,hhs_start_shaker_timed, hhs_start_temp_ctrl, hhs_stop_shaker, hhs_stop_temp_ctrl, hhs_wait_for_shaker, hhs_wait_for_temp_ctrl, hhs_terminate)
 
 
