@@ -10,14 +10,18 @@
   
 <code>pip install ez_setup bioprinter</code>.</p>
 
+
+
 <h2>What you should know</h2>
 
+
 <p>The files displayed in this repository are part of a 4-step process to print Bioart. Here´s how it goes:</p>
+
 
 <p><ol>
   <li>Find a image<ul>
       <li>The image needs to have blue as Background color</li>
-      <li>The image needs to be in jpeg format</li>
+      <li>The image needs to be in <strong>jpeg format</strong> </li>
   </ul></li>
   <li>Convert the image into a CSV file <ul>
       <li>Open a copy of the standard code of Byoprinter on your local Python text editor</li>
