@@ -54,7 +54,45 @@ def generate_protocol():
 Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module for ethanol washes
     """
     doc.add(protocol)
+    
+    
+  PLASMID_container = protocol.primitive_step(
+        "EmptyContainer",
+        specification=labop.ContainerSpec(
+            "PLASMID",
+            name="PLASMID",
+            queryString="cont:StockReagent",
+            prefixMap={
+                "cont": "https://sift.net/container-ontology/container-ontology#"
+            },
+        ),
+    )
+    fluorescein_standard_solution_container.name = "fluroscein_calibrant"
 
+    Ethanol_container = protocol.primitive_step(
+        "EmptyContainer",
+        specification=labop.ContainerSpec(
+            "sulforhodamine_calibrant",
+            name="Sulforhodamine 101 calibrant",
+            queryString="cont:StockReagent",
+            prefixMap={
+                "cont": "https://sift.net/container-ontology/container-ontology#"
+            },
+        ),
+
+        
+        
+ MPE_container = protocol.primitive_step(
+        "EmptyContainer",
+        specification=labop.ContainerSpec(
+            "PLASMID",
+            name="PLASMID",
+            queryString="cont:StockReagent",
+            prefixMap={
+                "cont": "https://sift.net/container-ontology/container-ontology#"
+            },
+        ),
+    )
  provision = protocol.primitive_step(
         "Provision",
         resource=PLASMID,
