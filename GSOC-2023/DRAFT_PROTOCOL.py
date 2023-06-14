@@ -12,6 +12,7 @@ from tyto import OM
 
 def generate_protocol():
     import labop
+    from labop_convert import DefaultBehaviorSpecialization
 
     doc = sbol3.Document()
     sbol3.set_namespace("http://labop.io/")
@@ -133,6 +134,22 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
     )
 
     protocol.to_dot().view()
+
+
+    OUT_DIR="."
+    ee = labop.ExecutionEngine(
+        out_dir=OUT_DIR,
+        failsafe=False,
+        sample_format="xarray"
+    )
+
+    execution = ee.execute(
+        protocol,
+        sbol3.Agent("test_agent"),
+        id="test_execution",
+        parameter_values=[],
+    )
+    ee.prov_observer.to_dot().view()
 
 if __name__ == "__main__":
     generate_protocol()
