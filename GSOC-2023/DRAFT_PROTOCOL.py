@@ -14,7 +14,7 @@ def generate_protocol():
     import labop
 
     doc = sbol3.Document()
-    sbol3.set_namespace(NAMESPACE)
+    sbol3.set_namespace("http://labop.io/")
 
     #############################################
     # Import the primitive libraries
@@ -34,7 +34,7 @@ def generate_protocol():
     )
     PLASMID.name = "DNA TO BE PURIFIEd"
 
-   Ethanol = sbol3.Component(
+    Ethanol = sbol3.Component(
         "silica_beads",
         "https://nanocym.com/wp-content/uploads/2018/07/NanoCym-All-Datasheets-.pdf",
     )
@@ -46,7 +46,8 @@ def generate_protocol():
     doc.add(PLASMID)
     doc.add(Ethanol)
     
-
+    PROTOCOL_NAME = "simple_transfer"
+    PROTOCOL_LONG_NAME="simple_transfer"
     protocol = labop.Protocol(PROTOCOL_NAME)
     protocol.name = PROTOCOL_LONG_NAME
     protocol.version = "1.2"
@@ -56,7 +57,7 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
     doc.add(protocol)
     
     
-  PLASMID_container = protocol.primitive_step(
+    PLASMID_container = protocol.primitive_step(
         "EmptyContainer",
         specification=labop.ContainerSpec(
             "PLASMID",
@@ -67,7 +68,7 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
             },
         ),
     )
-    fluorescein_standard_solution_container.name = "fluroscein_calibrant"
+
 
     Ethanol_container = protocol.primitive_step(
         "EmptyContainer",
@@ -79,21 +80,22 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
                 "cont": "https://sift.net/container-ontology/container-ontology#"
             },
         ),
+    )
 
         
         
- MPE_container = protocol.primitive_step(
+    MPE_container = protocol.primitive_step(
         "EmptyContainer",
         specification=labop.ContainerSpec(
-            "PLASMID",
-            name="PLASMID",
+            "PLASMID_container",
+            name="LASMID_container",
             queryString="cont:StockReagent",
             prefixMap={
                 "cont": "https://sift.net/container-ontology/container-ontology#"
             },
         ),
     )
- provision = protocol.primitive_step(
+    provision = protocol.primitive_step(
         "Provision",
         resource=PLASMID,
         destination=PLASMID_container.output_pin("samples"),
@@ -106,9 +108,13 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
         destination=Ethanol_container.output_pin("samples"),
         amount=sbol3.Measure(5000, OM.microliter),
     )
+    MPE2_wells_A1 = protocol.primitive_step(
+        "PlateCoordinates",
+        source=MPE_container.output_pin("samples"),
+        coordinates="A1",
+    )
 
-
- ### Transfer DNA from source plate to MPE2 plate
+    ### Transfer DNA from source plate to MPE2 plate
     transfer1 = protocol.primitive_step(
         "Transfer",
         source=PLASMID_container.output_pin("samples"),
@@ -125,3 +131,8 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
         destination=MPE2_wells_A1.output_pin("samples"),
         amount=sbol3.Measure(200, OM.microlitre),
     )
+
+    protocol.to_dot().view()
+
+if __name__ == "__main__":
+    generate_protocol()
