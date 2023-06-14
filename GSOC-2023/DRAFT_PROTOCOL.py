@@ -140,6 +140,7 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
     ee = labop.ExecutionEngine(
         out_dir=OUT_DIR,
         failsafe=False,
+        # specializations=[PyHamiltonSpecialization()]
         sample_format="xarray"
     )
 
