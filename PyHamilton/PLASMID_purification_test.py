@@ -38,9 +38,9 @@ from pyhamilton import (mpe2_connect_com, mpe2_filter_plate_placed, mpe2_process
         - robot grab tip
         - use tip to transport DNA from DNA plate to sample filter plate (later ejecting the tip)
         - process DNA through filter 
-        - do 2 washing steps through filter
+        - Add ethanol and do 2 washing steps through filter
         - and add water to the filter plate
-        - move filter plate to heater shaker
+        - move filter plate to heater shaker using robotic grippers
         - do shaking steps
         - retrieve plate manually from heater shaker
        
