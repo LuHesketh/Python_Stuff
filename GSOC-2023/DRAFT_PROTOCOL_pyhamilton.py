@@ -36,7 +36,7 @@ num_targets = 10
 
  
 
-def add_reagent(ham_int, source, target, num_targets, vols_list):
+def add_ethanol(ham_int, source, target, num_targets, vols_list):
     remaining_targets = num_targets
     while remaining_targets > 0:
         num_channels = 8 if remaining_targets >= 8 else remaining_targets
@@ -60,4 +60,4 @@ def add_reagent(ham_int, source, target, num_targets, vols_list):
 if __name__ == '__main__': 
     with HamiltonInterface(simulate=True) as ham_int: 
         initialize(ham_int)
-        add_reagent(ham_int, source = reagent_container[0], target = destination_plate[0], num_targets = 10, vols_list = 250)
+        add_ethanol(ham_int, source = reagent_container[0], target = destination_plate[0], num_targets = 10, vols_list = 250)

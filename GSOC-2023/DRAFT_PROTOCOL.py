@@ -39,9 +39,7 @@ def generate_protocol():
         "https://nanocym.com/wp-content/uploads/2018/07/NanoCym-All-Datasheets-.pdf",
     )
     Ethanol.name = "Ethanol 70%, ideal for PCR/PLASMID PUTIFICATION"
-    
-
-    
+        
 
     doc.add(PLASMID)
     doc.add(Ethanol)
@@ -54,45 +52,7 @@ def generate_protocol():
 Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module for ethanol washes
     """
     doc.add(protocol)
-    
-    
-  PLASMID_container = protocol.primitive_step(
-        "EmptyContainer",
-        specification=labop.ContainerSpec(
-            "PLASMID",
-            name="PLASMID",
-            queryString="cont:StockReagent",
-            prefixMap={
-                "cont": "https://sift.net/container-ontology/container-ontology#"
-            },
-        ),
-    )
-    fluorescein_standard_solution_container.name = "fluroscein_calibrant"
 
-    Ethanol_container = protocol.primitive_step(
-        "EmptyContainer",
-        specification=labop.ContainerSpec(
-            "sulforhodamine_calibrant",
-            name="Sulforhodamine 101 calibrant",
-            queryString="cont:StockReagent",
-            prefixMap={
-                "cont": "https://sift.net/container-ontology/container-ontology#"
-            },
-        ),
-
-        
-        
- MPE_container = protocol.primitive_step(
-        "EmptyContainer",
-        specification=labop.ContainerSpec(
-            "PLASMID",
-            name="PLASMID",
-            queryString="cont:StockReagent",
-            prefixMap={
-                "cont": "https://sift.net/container-ontology/container-ontology#"
-            },
-        ),
-    )
  provision = protocol.primitive_step(
         "Provision",
         resource=PLASMID,
@@ -109,19 +69,41 @@ Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module f
 
 
  ### Transfer DNA from source plate to MPE2 plate
-    transfer1 = protocol.primitive_step(
-        "Transfer",
-        source=PLASMID_container.output_pin("samples"),
-        destination=MPE2_wells_A1.output_pin("samples"),
-        amount=sbol3.Measure(200, OM.microlitre),
-
-
-     ### Transfer Ethanol from source plate to MPE2 plate for Ethanol washes
-
-    )
-    transfer2 = protocol.primitive_step(
+ 
+    transfer = protocol.primitive_step(
         "Transfer",
         source=Ethanol_container.output_pin("samples"),
         destination=MPE2_wells_A1.output_pin("samples"),
         amount=sbol3.Measure(200, OM.microlitre),
     )
+
+
+
+ final_dataset = protocol.primitive_step(
+        "JoinDatasets",
+        dataset=[
+            meta1.output_pin("enhanced_dataset"),
+            meta2.output_pin("enhanced_dataset"),
+            meta3.output_pin("enhanced_dataset"),
+            meta4.output_pin("enhanced_dataset"),
+        ],
+    )
+    outnode = protocol.designate_output(
+        "dataset",
+        "http://bioprotocols.org/labop#Dataset",
+        source=final_dataset.output_pin("joint_dataset"),
+    )
+
+    protocol.order(final_dataset, protocol.final())
+    protocol.order(outnode, protocol.final())
+
+    if REGENERATE_ARTIFACTS:
+        protocol_file = os.path.join(OUT_DIR, f"{filename}-protocol.nt")
+        with open(protocol_file, "w") as f:
+            print(f"Saving protocol [{protocol_file}].")
+            f.write(doc.write_string(sbol3.SORTED_NTRIPLES).strip())
+
+    return protocol, doc
+
+
+   

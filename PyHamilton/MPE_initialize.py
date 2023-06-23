@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jul 17 21:12:47 2022
+
+@author: 
+"""
 import pyhamilton
 import os
 from pyhamilton import (HamiltonInterface,  LayoutManager,  initialize, tip_pick_up, tip_eject, 
