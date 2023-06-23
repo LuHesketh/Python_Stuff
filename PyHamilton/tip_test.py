@@ -5,7 +5,6 @@ Spyder Editor
 This is a temporary script file.
 ""
 """
-<<<<<<< HEAD
 
 
 import pyhamilton
@@ -19,43 +18,6 @@ liq_class = 'StandardVolumeFilter_Water_DispenseJet_Part'
 		
 tips_poss = [(tips[0], x) for x in range(1)]
 
-=======
-
-import os
-import pyhamilton
-
-from pyhamilton import (HamiltonInterface,  LayoutManager, 
- Plate96, Tip96, initialize, tip_pick_up, tip_eject, 
- aspirate, dispense,  oemerr, resource_list_with_prefix)
-
-class TipRack:
-   
-    def __init__(self, rack):
-        self.rack = rack
-        self.starting_tips = rack._num_items
-        self.remaining_tips = rack._num_items
-    
-    def get_tips(self, num_tips):
-        current_tip = self.starting_tips - self.remaining_tips
-        tips_list = [(self.rack, tip) for tip in range(current_tip, current_tip + num_tips)]
-        self.remaining_tips -= num_tips
-        return tips_list
-    
-    def get_tips_seq(self, seq):
-        num_tips = len([ch for ch in seq.aspirate if ch])
-        tips = self.get_tips(num_tips)
-        return tips
-
-
-lmgr = LayoutManager('deck.lay')
-tips_res = lmgr.assign_unused_resource(ResourceType(Tip96, 'tips_96'))
-liq_class = 'StandardVolumeFilter_Water_DispenseJet_Empty'
-
-tips = TipRack(tips_res)
-
-tips_poss = tips.get_tips(num_channels)
-        tip_pick_up(ham_int, tips_poss)
->>>>>>> 780008592c60c8f2b19579fd0b1be72cdbba4211
 
  
 if __name__ == '__main__': 
@@ -63,7 +25,6 @@ if __name__ == '__main__':
         normal_logging(ham_int, os.getcwd())
         initialize(ham_int)
         tip_pick_up(ham_int, tips_poss)
-<<<<<<< HEAD
         tip_eject(ham_int, tips_poss)    
 	
 	
@@ -84,8 +45,3 @@ pyhamilton.oemerr.NoTipError
 
 
 
-=======
-        tip_eject(ham_int, tips_poss)
-        
-       
->>>>>>> 780008592c60c8f2b19579fd0b1be72cdbba4211
