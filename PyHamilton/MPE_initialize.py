@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jul 17 21:12:47 2022
 
 @author: 
 """
+=======
+>>>>>>> 780008592c60c8f2b19579fd0b1be72cdbba4211
 import pyhamilton
 import os
 from pyhamilton import (HamiltonInterface,  LayoutManager,  initialize, tip_pick_up, tip_eject, 
@@ -26,4 +29,8 @@ if __name__ == '__main__':
         mpe2_id = int(mpe2_id.return_data[0])
         print(mpe2_id)
         mpe2_initialize(ham_int, mpe2_id)
+<<<<<<< HEAD
        
+=======
+       
+>>>>>>> 780008592c60c8f2b19579fd0b1be72cdbba4211

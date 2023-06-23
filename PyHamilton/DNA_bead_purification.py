@@ -80,4 +80,3 @@ if __name__ == '__main__':
         add_reagent(reagent_plate, sample_plate, num_targets = 20, vol = 200)
         move_plate(ham_int, sample_plate, magnet_position)
         
-        #CHANGE TO JUST PICK UP TIP and put it back

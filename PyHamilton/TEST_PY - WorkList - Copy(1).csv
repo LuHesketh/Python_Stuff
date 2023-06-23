@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 Source Plate	,Source Well,Target Plate,Target Well
 Mrx_96_DW_0001,A1,Mrx_96_DW_0003,A1
 Mrx_96_DW_0001,A2,Mrx_96_DW_0003,A2
 Mrx_96_DW_0001,A3,Mrx_96_DW_0003,A3
+=======
+Source Plate	,Source Well,Destination Plate,Destination Well
+Mrx_96_DW_0001,A1,Mrx_96_DW_0003,A1
+Mrx_96_DW_0001,A2,Mrx_96_DW_0003,A2
+Mrx_96_DW_0001,A3,Mrx_96_DW_0003,A2
+>>>>>>> 780008592c60c8f2b19579fd0b1be72cdbba4211
