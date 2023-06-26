@@ -26,21 +26,21 @@ from pyhamilton import (mpe2_connect_com, mpe2_filter_plate_placed, mpe2_process
 
 
 
-   This DNA cleanup/purification protocol is to be executed using 2 HAMILTON modules. They are:
+   #This DNA cleanup/purification protocol is to be executed using 2 HAMILTON modules. They are:
        
-   * MPE2- Air pressure module. to be used to push/process the liquids through a filter
-   * HHS/Heater shaker - to shake the final product at 30 celcius (necessary finalstep)    
+   *# MPE2- Air pressure module. to be used to push/process the liquids through a filter
+   *# HHS/Heater shaker - to shake the final product at 30 celcius (necessary finalstep)    
        
-    the commands will be imported from PyHamilton and they are called out in the final "if name_=_main_" function THIS ORDER:
+    #the commands will be imported from PyHamilton and they are called out in the final "if name_=_main_" function THIS ORDER:
         
-        - robot grab tip
-        - use tip to transport DNA from DNA plate to sample filter plate (later ejecting the tip)
-        - process DNA through filter 
-        - Add ethanol and do 2 washing steps through filter
-        - and add water to the filter plate
-        - move filter plate to heater shaker using robotic grippers
-        - do shaking steps
-        - retrieve plate manually from heater shaker
+    #    - robot grab tip
+    #    - use tip to transport DNA from DNA plate to sample filter plate (later ejecting the tip)
+    #    - process DNA through filter 
+   #     - Add ethanol and do 2 washing steps through filter
+   #     - and add water to the filter plate
+   #     - move filter plate to heater shaker using robotic grippers
+    #     - do shaking steps
+    #    - retrieve plate manually from heater shaker
        
    
 
@@ -84,57 +84,9 @@ tips2 = TipRack(tips_res2)
 
 
 # give parameters for MPE functions
-Controlpoints = [   
-     {  
-          "Type": "pressure",
-          "Value": 0,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",
-          "Value": 10,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",   
-          "Value": 15,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",   
-          "Value": 20,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",
-          "Value": 30,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",
-          "Value": 40,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",
-          "Value": 50,
-          "Duration": 5
-     },
-     {  
-          "Type": "pressure",
-          "Value": 60,
-          "Duration": 5
-     },
-     
-]
+controlpoints = "pressure, 0, 0; pressure, 10, 5; pressure, 15, 5; pressure, 20, 5; pressure, 30, 5; pressure, 40, 5; pressure, 50, 5;  pressure, 60, 5"
 
-control_points = Controlpoints[:]
-
-#translate MPE parameters to a JSON series
-json_string = json.dumps(Controlpoints, indent = 2)
-with open('mydata.json', 'w') as f:
-    f.write(json_string)
-
+control_points = controlpoints[:]
 
 
 #transfer DNA from source plate to sample filter plate(should be located on the MPE dock)
