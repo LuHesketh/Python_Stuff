@@ -35,5 +35,3 @@ a air-pressure pump.</p>
 <code>pip install ez_setup bioprinter</code>.</p>
 
 <p>The <strong>BIOART PNG FILES </strong>correspend to pictures of finished projects. you can check them out at the <a href="https://github.com/LuHesketh/Python_Stuff/tree/main/bioprinter_test">bioprinter_test</a> repository.</p>
-
-
