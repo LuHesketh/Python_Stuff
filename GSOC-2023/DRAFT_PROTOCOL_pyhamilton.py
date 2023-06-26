@@ -34,7 +34,7 @@ tips = TipRack(tips_res[0])
 
 num_targets = 10
 
- 
+
 
 def add_ethanol(ham_int, source, target, num_targets, vols_list):
     remaining_targets = num_targets
