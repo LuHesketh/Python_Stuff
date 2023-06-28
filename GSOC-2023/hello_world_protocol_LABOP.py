@@ -116,7 +116,7 @@ def generate_protocol():
     )
 
     ### Transfer PLASMID from source plate to MPE2 plate
-    transfer1 = protocol.primitive_step(
+    transfer_PLASMID = protocol.primitive_step(
         "Transfer",
         source=PLASMID_container.output_pin("samples"),
         destination=MPE2_wells_A1.output_pin("samples"),
@@ -126,7 +126,7 @@ def generate_protocol():
      ### Transfer Ethanol from source plate to MPE2 plate for Ethanol washes
 
     )
-    transfer2 = protocol.primitive_step(
+    transfer_ethanol = protocol.primitive_step(
         "Transfer",
         source=Ethanol_container.output_pin("samples"),
         destination=MPE2_wells_A1.output_pin("samples"),
