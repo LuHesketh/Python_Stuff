@@ -123,7 +123,7 @@ def generate_protocol():
         amount=sbol3.Measure(20, OM.microlitre),
 
 
-     ### Transfer Ethanol from source plate to MPE2 plate for Ethanol washes
+    ### Transfer Ethanol from source plate to MPE2 plate for Ethanol washes
 
     )
     transfer_ethanol = protocol.primitive_step(
