@@ -115,12 +115,12 @@ def generate_protocol():
         coordinates="A1",
     )
 
-    ### Transfer DNA from source plate to MPE2 plate
+    ### Transfer PLASMID from source plate to MPE2 plate
     transfer1 = protocol.primitive_step(
         "Transfer",
         source=PLASMID_container.output_pin("samples"),
         destination=MPE2_wells_A1.output_pin("samples"),
-        amount=sbol3.Measure(200, OM.microlitre),
+        amount=sbol3.Measure(20, OM.microlitre),
 
 
      ### Transfer Ethanol from source plate to MPE2 plate for Ethanol washes
