@@ -53,7 +53,7 @@ def generate_protocol():
     protocol.name = PROTOCOL_LONG_NAME
     protocol.version = "1.2"
     protocol.description = """
-Protocol for PCR putification using a Hamilton and a MPE2 pressure pump module for ethanol washes
+ protocol to transfer plasmid and ethanol to a MPE container
     """
     doc.add(protocol)
     
