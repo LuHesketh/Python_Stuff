@@ -12,11 +12,14 @@ import os
 from pyhamilton import (HamiltonInterface,  LayoutManager, Plate96, Tip96, initialize, tip_pick_up, 
                         tip_eject, oemerr, aspirate, dispense, resource_list_with_prefix, normal_logging, ResourceType)
 
-
+#the layout manager allows you to acces the labware ID on venus so you can attatch it to the liquid handling commands
 lmgr = LayoutManager('deck_.lay')
+
+
 tips = resource_list_with_prefix(lmgr, 'STF_L_0001', Tip96, 1)
 reagent_container = resource_list_with_prefix(lmgr, 'Mrx_96_DW_0001', Plate96, 1)
 destination_plate = resource_list_with_prefix(lmgr, 'Mrx_96_DW_0002', Plate96, 1)
+
 liq_class = 'StandardVolumeFilter_Water_DispenseJet_Part'
 
 
